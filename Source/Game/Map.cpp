@@ -262,15 +262,21 @@ void  Map::change() {
 void Map::gg() {
 	CDC *pDC = CDDraw::GetBackCDC();
 	CTextDraw::ChangeFontLog(pDC, 36, "微軟正黑體", RGB(0, 0, 0), 800);
-	if (validate_phase() == 1) {
+	if (phase == 30 && validate_phase() == 1) {
+		CTextDraw::Print(pDC, 350, 300, "You have completed all levels");
+		CTextDraw::Print(pDC, 350, 350, "thanks for playing!!!");
+	
+	}
+	else if (validate_phase() == 1) {
 		CTextDraw::Print(pDC, 350, 300, "Congratulations!");
 		CTextDraw::Print(pDC, 300, 350, "press Enter to next phase");
 	}
 
-	if (penguin.GetFrameIndexOfBitmap() == 1) {
+	else if (penguin.GetFrameIndexOfBitmap() == 1) {
 		CTextDraw::Print(pDC, 350, 300, "GGs");
 		CTextDraw::Print(pDC, 300, 350, "press R to restart");
 	}
+
 	CDDraw::ReleaseBackCDC();
 }
 
